@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 import sentry_sdk
 from sentry_sdk.ai.monitoring import record_token_usage
 from sentry_sdk.consts import OP, SPANDATA
-from sentry_sdk.integrations import _check_minimum_version, DidNotEnable, Integration
+from sentry_sdk.integrations import DidNotEnable, Integration, _check_minimum_version
 from sentry_sdk.scope import should_send_default_pii
 from sentry_sdk.utils import (
     capture_internal_exceptions,
@@ -21,8 +21,7 @@ except ImportError:
     raise DidNotEnable("Anthropic not installed")
 
 if TYPE_CHECKING:
-    from typing import Any, AsyncIterator, Iterator
-    from sentry_sdk.tracing import Span
+    pass
 
 
 class AnthropicIntegration(Integration):
